@@ -1,0 +1,69 @@
+We are going to learn how to import models into the three js scene 
+We can  build cute little houses and i you want to create really complex models 
+spaceships or aliens then you better use softwares like blender or cinema 4d mira 
+
+Take it from someone lese and then import the models the   
+into hte three 3js scenes 
+
+There are multiple formats a lot of 3d formats 
+Because they were responding to a problem 
+weight compression compatability 
+A lot of formats 
+
+Why a lot of formats - 
+we import models acording to criteria, 
+maybe we dont have a choice. we bought it from a 3d artist 
+It is better to have cvontrol over the formats then to tell the person that we need this file in one criteria 
+
+Lot of data on those 3D files, then the website would be too heacy for those files to load 
+There are open source formats 
+there are ascii files and binary files 
+We can also create our own formats - blender using python 
+
+Popular ones include obj poly gltf 
+GLTF is not always the best solution for light weight we can also use models 
+
+files 
+duck > gltf + binary + png 
+load one gltf file and the rest will be automatically loaded by the loader 
+gltf binary cannot be read 
+binary files are easier to load - 
+gltf draco - gltf default - buffer data is compressed - lightese among all 
+gltf embedded - one file that we can read - heaviest of them all 
+which one do we use ? 
+    depend on how we want to handle the files 
+
+Draco compression - algorithm 
+
+How to load the files ? 
+    We need to use the gltf loader 
+    THREE.GLTF loader is not loaded by defualt 
+
+    import the file 
+    instantialte using const gltfLoader = new GLTFLoader();
+    we can also use the loading manager 
+
+    when we load the model we can get access to 
+    what has been loaded by putting anything here 
+
+mesh > scene > children > 
+for gltf objects > fo to object3D anad see always the rotation, position and the scale 
+
+We have multiple ways of getting hte duck to the scene 
+
+it is something inside somehting insode of something 
+and we add that thing to our scene 
+
+add the duck scene to our scene and then ignore the perspective camera 
+filter the childrent and hten add to the scene which can be very hard - as we have to traverst he whole goddamn structure before adding to the scene 
+Add only the meshe and end up with a duck with a wrong scale. position and rotation
+
+What is draco version ? 
+    The draco version can be much lghter than the default version 
+    The draco compressed file is at least fove times lighter 
+    draco is added to the buffer data = duck.bin = geometry 
+
+    not exclusive to gltf but just got popular over time fpr this use case 
+    Draco algorithm is developed by gooogler and is under open source apache licnce 
+    wE NEED THE DRACO LOADER to add draco to our projects 
+      

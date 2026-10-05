@@ -1,0 +1,35 @@
+Since you're currently at Level 4, here's the simple roadmap to follow alongside Bruno Simon's course:
+
+Stage	Bruno Course	You Learn	Your Parallel Work
+1. Finish Level 4	3D Models / Assets	GLTF, GLB, GLTFLoader, animations, DRACO	Load different .glb models yourself
+2. Project 1	—	Apply Level 4	Build a 3D Product Viewer from scratch
+3. Level 5	Interaction	Raycasting, mouse, clicks, hover, controls	Make interactive objects
+4. Level 5	Camera / Scroll	Camera movement, scroll interaction	Build a 3D scrolling landing page
+5. Level 5	Animation	GSAP / Three.js animation concepts	Create your own camera/object animations
+6. Particles	Particles	Points, BufferGeometry, BufferAttribute	Build particle experiments
+7. Project 2	—	Combine everything so far	Build a particle experience
+8. Level 6	Post-processing	EffectComposer, passes, Bloom, effects	Experiment with different effects
+9. Level 6	Shaders	GLSL, vertex/fragment shaders, uniforms	Make small shader experiments
+10. Project 3	—	Shaders + particles + effects	Build a shader-based experience
+11. Level 7	Performance	Draw calls, GPU, instancing, textures, optimization	Optimize your previous projects
+12. Final Project	—	Everything	Build one serious Three.js project from scratch
+13. After Bruno	—	React integration	Learn React Three Fiber + Drei
+Your rule for every Bruno topic
+Step	What you do
+1	Watch Bruno's lesson
+2	Code along
+3	Close the tutorial
+4	Rebuild the concept yourself
+5	Change/experiment with it
+6	Move to the next lesson
+Your overall path
+
+You're here →
+
+3D Assets → Product Viewer → Interaction → 3D Landing Page → Particles → Post Processing → Shaders → Performance → Final Project → React Three Fiber
+
+That's it. Don't study anything outside the current stage unless Bruno's lesson requires it.
+
+
+
+
