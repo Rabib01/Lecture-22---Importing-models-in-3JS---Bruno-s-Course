@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 /**
  * Base
@@ -16,32 +17,49 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 // Models load
+const draco = new DRACOLoader();
+draco.setDecoderPath("/draco/");
+
 const gltfLoader = new GLTFLoader();
+gltfLoader.setDRACOLoader(draco);
 
 // gltfLoader.load("/models/Duck/glTF/Duck.gltf", (gltf) => {
 //   scene.add(gltf.scene.children[0]);
 // });
 
+// gltfLoader.load(
+//   "/models/Fox/glTF/Fox.gltf",
+
+//   (gltf) => {
+//     // console.log(gltf.scene);
+//     // scene.add(gltf.scene.children[0]);
+//     // for (const child of gltf.scene.children) {
+//     //   scene.add(child);
+//     // }
+//     // solution 1
+//     // while (gltf.scene.children.length) {
+//     //   scene.add(gltf.scene.children[0]);
+//     // }
+//     //
+//     // soluton 2
+//     // const children = [...gltf.scene.children];
+
+//     // for (const child of children) {
+//     //   scene.add(child);
+//     // }
+//     scene.add(gltf.scene);
+//   },
+// );
+
+let mixer = null;
 gltfLoader.load(
-  "/models/Duck/glTF-Draco/Duck.gltf",
+  "/models/Fox/glTF/Fox.gltf",
 
   (gltf) => {
-    // console.log(gltf.scene);
-    // scene.add(gltf.scene.children[0]);
-    // for (const child of gltf.scene.children) {
-    //   scene.add(child);
-    // }
-    // solution 1
-    // while (gltf.scene.children.length) {
-    //   scene.add(gltf.scene.children[0]);
-    // }
-    //
-    // soluton 2
-    // const children = [...gltf.scene.children];
-
-    // for (const child of children) {
-    //   scene.add(child);
-    // }
+    mixer = new THREE.AnimationMixer(gltf.scene);
+    const action = mixer.clipAction(gltf.animations[2]);
+    action.play();
+    gltf.scene.scale.set(0.025, 0.025, 0.025);
     scene.add(gltf.scene);
   },
 );
@@ -139,6 +157,11 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime();
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
+
+  //  update Mixer
+  if (mixer !== null) {
+    mixer.update(deltaTime);
+  }
 
   // Update controls
   controls.update();

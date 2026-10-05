@@ -66,4 +66,46 @@ What is draco version ?
     not exclusive to gltf but just got popular over time fpr this use case 
     Draco algorithm is developed by gooogler and is under open source apache licnce 
     wE NEED THE DRACO LOADER to add draco to our projects 
-      
+
+    We have to instantiate the dracoloader before the gltf loader
+    The draco loader decoder is also available in web assembly 
+    and it can work with worker too 
+    we can put another javaScript thread working with us.
+    we put part of the javaScript logic in another thread 
+
+    gltfLoader.setDRACOLoader(draco);
+     - > We provide our draco instance which is using webassembly and workers 
+     to our gltf loader by using hte set dracoloader 
+     Now this duck is so much lighter than the one that was using kjust the gltflaodare because of the draco compression 
+
+    So when do we use the draco compression ?": 
+     no, qwe shold not always use compression 
+     we are loading a lot of things in order to loead less things, 
+     so it really depends on us as developers 
+
+     Our curremt geometry is 100kb 
+     so, is it really necessary for us to be saving these 100s of kilobytes ? 
+     15MB - use the draco loaders - dont for small files or geometries 
+
+    Half a second will freeze 
+    We have to TEST AND MAKE THE RIGHT DECISIONS 
+
+    we are using the fox for the animations because on the other files the animation array was only an empty array 
+    how to implement animations - we use somehting called animation clips and thse are 3js classes 
+    animationClips - these are keyframes 
+
+    to use them we use something known as animation mixer 
+    3JS class - like a player - to play songs we need a player to play the songs 
+    then we have to use something known as the animation action 
+    after that we use acton.play()
+    This thing woud still not work because we need to tell the animtion mixer to update on each frame 
+    mixer.update(deltaTime)
+
+    deltaTime = how much seconds were spent since the last tick 
+    We dont have access to the mixer ? 
+    because we created our mixer inside of hte function scope and so it does not have access to the global scope 
+    let mixer = null and check if mixer !== null on hte tick function
+
+
+
+    
